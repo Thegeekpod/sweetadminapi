@@ -31,7 +31,9 @@ app.use(cookieParser());
 // app.use(upload.none());
 app.use('/auth', authRoutes);
 app.use('/profile', profileRoutes);
-
+app.use('/',(req,res)=>{
+  res.status(200).json({'hellow':'sweetdev'})
+})
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
   console.log(`Server running on port ${port}`);
