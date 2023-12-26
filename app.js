@@ -10,7 +10,7 @@ const multer = require('multer');
 const authRoutes = require('./routes/admin/authroutes.js');
 const profileRoutes = require('./routes/admin/profileRoutes.js');
 const { checkLogin } = require('./utils/authUtils.js');
-
+const api = require('./apiconfig.json');
 dotenv.config({ path: './config.env' });
 // const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.join(__dirname, 'config.env') });
@@ -21,9 +21,9 @@ app.use(session({ resave: false, saveUninitialized: true, secret: 'nodedemo' }))
 app.use(cookieParser());
 app.use(expressLayouts);
 app.use(cookieParser());
-
-app.use('/api/v1/auth', authRoutes);
-app.use('/api/v1/profile', profileRoutes);
+// console.log(`${api.ROOTAPI}/${api.API_FIRSTPOINT.LOGIN}`)
+app.use(`${api.ROOTAPI}${api.API_FIRSTPOINT.LOGIN}`, authRoutes);
+app.use(`${api.ROOTAPI}${api.API_FIRSTPOINT.PROFILE}`, profileRoutes);
 app.use('/', (req, res) => {
   res.status(200).json({ 'hello': 'sweetdeveloper' });
 });
