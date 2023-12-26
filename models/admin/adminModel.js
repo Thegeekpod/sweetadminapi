@@ -1,16 +1,16 @@
-import mysql from 'mysql2/promise';
-import bcrypt from 'bcrypt';
-// import dbconfig from '../../config/dbconfig.js';
+const mysql = require('mysql2/promise');
+const bcrypt = require('bcrypt');
+const dbconfig = require('../../config/dbconfig.js');
 
-const dbconfig = {
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'sweetadmin',
-  jwtSecret: 'your_jwt_secret'
-};
+// const dbconfig = {
+//   host: 'localhost',
+//   user: 'root',
+//   password: '',
+//   database: 'sweetadmin',
+//   jwtSecret: 'your_jwt_secret'
+// };
+
 const pool = mysql.createPool(dbconfig);
-
 
 const Admin = {
   async addNewAdmin(username, plaintextPassword, email) {
@@ -80,4 +80,5 @@ const Admin = {
 //   .catch((error) => {
 //     console.error('Error initializing database:', error);
 //   });
-  export default Admin;
+
+module.exports = Admin;

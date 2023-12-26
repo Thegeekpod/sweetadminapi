@@ -1,9 +1,8 @@
 {
-  "name": "ubold-node",
+  "name": "sweetadmin",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "start": "nodemon app.js"
   },

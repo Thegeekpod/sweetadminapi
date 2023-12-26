@@ -1,6 +1,6 @@
-import Admin from "../../models/admin/adminModel.js";
+const Admin = require("../../models/admin/adminModel.js");
 
-export const viewProfile = async (req, res) => {
+const viewProfile = async (req, res) => {
   try {
     const adminId = req.adminId; // Extracted from JWT verification
     const admin = await Admin.getAdminById(adminId);
@@ -14,3 +14,5 @@ export const viewProfile = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+module.exports = { viewProfile };

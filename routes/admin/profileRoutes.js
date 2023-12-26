@@ -1,9 +1,8 @@
-import express from 'express';
-import { verifyToken } from '../../utils/authUtils.js';
-import { viewProfile } from '../../controllers/admin/profileController.js';
+const express = require('express');
+const { verifyToken } = require('../../utils/authUtils.js');
+const { viewProfile } = require('../../controllers/admin/profileController.js');
 const router = express.Router();
-
 
 router.get('/', verifyToken, viewProfile);
 
-export default router;
+module.exports = router;
