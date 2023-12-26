@@ -6,7 +6,7 @@
 .pnp.js
 /config
 # testing
-/coverage/dbconfig.js
+/config/dbconfig.js
 /config.env
 
 # production
