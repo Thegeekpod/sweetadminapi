@@ -25,7 +25,7 @@ app.use(cookieParser());
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/profile', profileRoutes);
 app.use('/', (req, res) => {
-  res.status(200).json({ 'hello': 'sweetdeve' });
+  res.status(200).json({ 'hello': 'sweetdeveloper' });
 });
 
 const port = process.env.PORT || 3000;
