@@ -7,9 +7,9 @@ const upload = require('express-fileupload');
 const dotenv = require('dotenv');
 const apiconfig = require('./apiconfig.json')
 const authRoutes = require('./routes/admin/authroutes')
-
+const cors = require('cors');
 dotenv.config({ path: "./config.env" });
-
+app.use(cors());
 app.use(upload());
 app.use(express.json());
 app.use(session({ resave: false, saveUninitialized: true, secret: 'nodedemo' }));
