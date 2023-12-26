@@ -22,8 +22,8 @@ app.use(cookieParser());
 app.use(expressLayouts);
 app.use(cookieParser());
 
-app.use('/auth', authRoutes);
-app.use('/profile', profileRoutes);
+app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/profile', profileRoutes);
 app.use('/', (req, res) => {
   res.status(200).json({ 'hello': 'sweetdev' });
 });
