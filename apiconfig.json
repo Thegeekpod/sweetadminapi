@@ -1,12 +1,12 @@
 {
     "ROOTAPI": "",
     "API_FIRSTPOINT": {
-        "LOGIN": "/api/v1/auth",
-        "PROFILE":"/api/v1/profile"
+        "LOGIN": "/api/v1/auth"
+        
     },
     "API_ENDPOINT": {
         "LOGIN": "/login",
         "LOGOUT":"/logout",
-        "PROFILE":"/"
+        "PROFILE":"/profile"
     }
 }
