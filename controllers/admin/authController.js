@@ -40,6 +40,25 @@ const viewProfile = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+const authchecker = async (req, res) => {
+  try {
+    const token = req.headers['authorization'] ? req.headers['authorization'].replace('Bearer ', '') : null;
+    if (!token) {
+      return res.status(401).json({ response:'false',message: 'Token not provided' });
+    }
+
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+      if (err) {
+        console.error(err);
+        return res.status(401).json({response:'false', message: 'Invalid token' });
+      }
+      return res.status(200).json({response:'true', message: 'Token is valid' });
+    });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
 const logout = (req, res) => {
   // Assuming you're using cookies for storing the token
   res.clearCookie('token'); // Clear the token cookie
@@ -50,4 +69,4 @@ const logout = (req, res) => {
   res.json({ success: true, message: 'Logged out successfully', shortExpiryToken });
 };
 
-module.exports = { login, logout,viewProfile };
+module.exports = { login, logout,viewProfile,authchecker };
