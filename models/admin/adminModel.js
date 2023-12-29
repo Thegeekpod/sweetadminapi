@@ -19,7 +19,7 @@ const Admin = {
     const connection = await pool.getConnection();
     try {
       await connection.query(
-        'INSERT INTO admins (username, password, email) VALUES (?, ?, ?)',
+        'INSERT INTO users (username, password, email) VALUES (?, ?, ?)',
         [username, hashedPassword, email]
       );
     } finally {
@@ -30,7 +30,7 @@ const Admin = {
   async getAdminByUsername(username) {
     const connection = await pool.getConnection();
     try {
-      const [rows] = await connection.query('SELECT * FROM admins WHERE username = ?', [username]);
+      const [rows] = await connection.query('SELECT * FROM users WHERE username = ?', [username]);
       return rows[0];
     } finally {
       connection.release();
@@ -40,7 +40,7 @@ const Admin = {
   async getAdminById(adminId) {
     const connection = await pool.getConnection();
     try {
-      const [rows] = await connection.query('SELECT * FROM admins WHERE id = ?', [adminId]);
+      const [rows] = await connection.query('SELECT * FROM users WHERE id = ?', [adminId]);
       return rows[0];
     } finally {
       connection.release();
@@ -50,13 +50,13 @@ const Admin = {
 
 // const DummyData = {
 //   async insertDummyData() {
-//     const dummyAdmins = [
+//     const dummyusers = [
 //       { username: 'admin1', password: 'password1', email: 'admin1@example.com' },
 //       { username: 'admin2', password: 'password2', email: 'admin2@example.com' },
 //       // Add more dummy admin data as needed
 //     ];
 
-//     for (const admin of dummyAdmins) {
+//     for (const admin of dummyusers) {
 //       await Admin.addNewAdmin(admin.username, admin.password, admin.email);
 //     }
 //   },
