@@ -32,7 +32,7 @@ const addEmploy = async (employData) => {
             throw new Error('Email already exists');
         }
         const query =
-            'INSERT INTO users (username, name, email, phone_number, occupation, address, password, user_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+            'INSERT INTO users (username, name, email, phoneNumber, occupation, address, password, userType) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
         const [rows] = await connection.query(query, [
             username,
             name,
