@@ -89,7 +89,7 @@ const updateEmploy = async (employId, updatedEmployData) => {
         const updatedUsername = username !== null ? username : existingData.username;
         const updatedName = name !== null ? name : existingData.name;
         const updatedEmail = email !== null ? email : existingData.email;
-        const updatedPhoneNumber = phoneNumber !== null ? phoneNumber : existingData.phone_number;
+        const updatedPhoneNumber = phoneNumber !== null ? phoneNumber : existingData.phoneNumber;
         const updatedOccupation = occupation !== null ? occupation : existingData.occupation;
         const updatedAddress = address !== null ? address : existingData.address;
 
@@ -101,7 +101,7 @@ const updateEmploy = async (employId, updatedEmployData) => {
         }
 
         const query =
-            'UPDATE users SET username=?, name=?, email=?, phone_number=?, occupation=?, address=?, password=?, user_type=? WHERE id=?';
+            'UPDATE users SET username=?, name=?, email=?, phoneNumber=?, occupation=?, address=?, password=?, userType=? WHERE id=?';
         const [rows] = await connection.query(query, [
             updatedUsername,
             updatedName,
@@ -110,7 +110,7 @@ const updateEmploy = async (employId, updatedEmployData) => {
             updatedOccupation,
             updatedAddress,
             hashedPassword,
-            userType !== null ? userType : existingData.user_type,
+            userType !== null ? userType : existingData.userType,
             employId
         ]);
 
