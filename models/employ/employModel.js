@@ -96,8 +96,10 @@ const updateEmploy = async (employId, updatedEmployData) => {
         let hashedPassword = existingData.password; // Initialize with the existing hashed password
 
         // If a new password is provided and not null, hash it before updating
-        if (password !== null) {
+        if (typeof password !== null) {
             hashedPassword = await bcrypt.hash(password, 10);
+        } else {
+            hashedPassword = existingData.password;
         }
 
         const query =
